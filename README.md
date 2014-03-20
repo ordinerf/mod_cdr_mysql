@@ -4,6 +4,7 @@ mod_cdr_mysql
 FreeSWITCH Module CDR MYSQL
 
 Just copy this folder in /usr/local/src/freeswitch/src/mod/event_handlers/
+
       make
       make install
       
