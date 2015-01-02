@@ -1,0 +1,73 @@
+<configuration name="cdr_mysql.conf" description="CDR mySQL Format">
+  <settings>
+      <!-- mySQL server location -->
+    <param name="db-host" value="localhost"/>
+        <!-- mySQL username -->
+    <param name="db-user" value="freeswitch"/>
+        <!-- mySQL password -->
+    <param name="db-pass" value="ClueCon"/>
+        <!-- CDR database name -->
+    <param name="db-name" value="cdr"/>
+        <!-- CDR table name -->
+    <param name="db-table" value="cdr"/>
+        <!-- How long do we wait for a response before we give up? -->
+    <param name="db-timeout" value="5"/>
+
+    <!-- Log a-leg (a), b-leg (b) or both (ab) -->
+    <param name="legs" value="ab"/>
+
+    <!-- Directory in which to spool failed SQL inserts -->
+    <!-- <param name="spool-dir" value="$${base_dir}/log/cdr-mysql"/> -->
+    <!-- Disk spool format if DB connection/insert fails - csv (default) or sql -->
+    <param name="spool-format" value="csv"/>
+    <param name="rotate-on-hup" value="true"/>
+    <!-- If we're debugging this module, set this to "true", otherwise choose "false" for best performance -->
+    <param name="debug" value="true"/>
+      </settings>
+        <!-- These are the column names to be used in the CDR table -->
+  <schema>
+
+	<!--
+	CREATE TABLE IF NOT EXISTS `freeswitch_cdr` (
+	  `id` int(11) NOT NULL AUTO_INCREMENT,
+	  `direction` varchar(16) DEFAULT NULL,
+	  `call_id` varchar(255) DEFAULT NULL,
+	  `local_ip_v4` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+	  `caller_id_number` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+	  `context` varchar(32) DEFAULT NULL,
+	  `destination_number` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+	  `route` varchar(255) DEFAULT NULL,
+	  `route_ip` varchar(32) DEFAULT NULL,
+	  `start_stamp` timestamp NULL DEFAULT NULL,
+	  `answer_stamp` timestamp NULL DEFAULT NULL,
+	  `end_stamp` timestamp NULL DEFAULT NULL,
+	  `duration` int(11) DEFAULT NULL,
+	  `billsec` int(11) DEFAULT NULL,
+	  `hangup_cause` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
+	  `uuid` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+	  `read_codec` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
+	  `write_codec` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+	-->
+
+        <field var="direction"/>
+        <field var="call_uuid" column="call_id"/>
+        <field var="local_ip_v4"/>
+        <field var="caller_id_number"/>
+        <field var="context"/>
+        <field var="destination_number"/>
+        <field var="channel_name" column="route"/>
+        <field var="network_addr" column="route_ip"/>
+        <field var="start_stamp"/>
+        <field var="answer_stamp"/>
+        <field var="end_stamp"/>
+        <field var="duration" quote="false"/>
+        <field var="billsec" quote="false"/>
+        <field var="hangup_cause"/>
+        <field var="read_codec"/>
+        <field var="write_codec"/>
+        <field var="uuid"/>
+
+  </schema>
+  </configuration>
