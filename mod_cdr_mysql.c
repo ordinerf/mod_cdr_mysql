@@ -536,7 +536,7 @@ SWITCH_MODULE_LOAD_FUNCTION(mod_cdr_mysql_load)
 {
 	switch_status_t status = SWITCH_STATUS_SUCCESS;
 	load_config(pool);
-	switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_INFO, "\n\n##########################################\n##########   BJT STATS LOADED   ##########\n##########################################\n##########   HOST : %s   \n##########   DB : %s  \n##########   Table : %s   \n##########################################\n\n",globals.db_host,globals.db_name,globals.db_table);
+	switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_INFO, "\n\n##########################################\n##########   MySQL CDR LOADED   ##########\n##########################################\n##########   HOST : %s   \n##########   DB : %s  \n##########   Table : %s   \n##########################################\n\n",globals.db_host,globals.db_name,globals.db_table);
 
 	if ((status = switch_dir_make_recursive(globals.spool_dir, SWITCH_DEFAULT_DIR_PERMS, pool)) != SWITCH_STATUS_SUCCESS) {
 		switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_ERROR, "Error creating %s\n", globals.spool_dir);
