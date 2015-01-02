@@ -3,6 +3,8 @@ mod_cdr_mysql
 
 FreeSWITCH Module CDR MYSQL
 
+apt-get install libmysql++-dev
+
 Just copy this folder in /usr/local/src/freeswitch/src/mod/event_handlers/
 
       make
